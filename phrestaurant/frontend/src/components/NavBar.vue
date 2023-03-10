@@ -169,7 +169,7 @@ export default {
 
 .header .icons .account .drop-down-select a {
     text-decoration: none;
-    color: #130f40;
+    color: black;
     font-size: 15px;
     font-weight: 500;
     float: left;
