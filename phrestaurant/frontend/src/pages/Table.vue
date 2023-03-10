@@ -3,7 +3,7 @@
     <section class="order-section">
 
         <div class="heading">
-            <span>book a table</span>
+            <span>book a mini event good for 30 person</span>
             <h3>enjoy your moment</h3>
         </div>
 

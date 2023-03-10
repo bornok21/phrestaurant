@@ -1,6 +1,10 @@
 <template>
     <div class="header">
-        <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/taco-logo.png" alt="" />PH Food
+        <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/logo-removebg-preview.png" alt="" />
+            </router-link>
+            <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/inasal-removebg-preview.png" alt="" />
+            </router-link>
+                <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/karenderia-removebg-preview.png" alt="" />
         </router-link>
 
         <nav class="navbar">
@@ -101,7 +105,7 @@ export default {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: #ce4641;
+    background: white;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
@@ -118,6 +122,7 @@ export default {
 .header .logo img {
     padding-right: .5rem;
     color: #ce4641;
+    width: 90px;
 }
 
 .header .navbar a {
@@ -127,11 +132,11 @@ export default {
 }
 
 .header .navbar a:hover {
-    color: #fff;
+    color: black;
 }
 
 .header .navbar a.router-link-exact-active {
-    color: #fff;
+    color: black;
 }
 
 .header .icons div {
