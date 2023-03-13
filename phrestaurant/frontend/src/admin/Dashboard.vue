@@ -6,7 +6,31 @@
         </div>
         
 
+
+
         <div class="table-responsive">
+            
+            <div>
+    <h2>Add New Food Item</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="name" required>
+      <label for="description">Description:</label>
+      <textarea id="description" v-model="description" required></textarea>
+      <label for="price">Price:</label>
+      <input type="number" id="price" v-model="price" required>
+      <button @click.prevent="addFoodItem">Add Food Item</button>
+    </form>
+
+    <div v-if="addedFoodItem">
+      <h2>Newly Added Food Item:</h2>
+      <p>Name: {{ addedFoodItem.name }}</p>
+      <p>Description: {{ addedFoodItem.description }}</p>
+      <p>Price: {{ addedFoodItem.price }}</p>
+    </div>
+  </div>
+
+
             <!-- PROJECT TABLE -->
             <table class="table colored-header datatable project-list">
                 <thead>
@@ -56,6 +80,8 @@
             </table>
         </div>
     </div>
+
+
 </template>
 
 
@@ -72,6 +98,11 @@ export default {
             showOrderDetails: false,
             sendId: undefined,
             interval: "",
+
+            name: '',
+            description: '',
+            price: null,
+            addedFoodItem: null
         }
     },
 
@@ -99,6 +130,30 @@ export default {
     },
 
     methods: {
+        async addFoodItem() {
+            const response = await fetch("/menu", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: this.name,
+                    description: this.description,
+                    price: this.price
+                })
+            });
+
+            if (response.ok) {
+            this.addedFoodItem = {
+            name: this.name,
+            description: this.description,
+            price: this.price
+            };
+            this.name = '';
+            this.description = '';
+            this.price = null;
+      }
+
+        },
+
         ...mapMutations(["setAdmin"]),
 
         async getAllBills() {

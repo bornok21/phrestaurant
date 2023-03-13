@@ -2,10 +2,6 @@
     <div class="header">
         <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/logo-removebg-preview.png" alt="" />
             </router-link>
-            <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/inasal-removebg-preview.png" alt="" />
-            </router-link>
-                <router-link @click="scrollToTop()" to="/" class="logo"><img src="../assets/images/karenderia-removebg-preview.png" alt="" />
-        </router-link>
 
         <nav class="navbar">
             <router-link @click="scrollToTop()" to="/">home</router-link>

@@ -21,6 +21,19 @@
         </div>
     </div>
     
+    <div>
+    <form @submit.prevent="submitForm">
+      <label>Name:</label>
+      <input type="text" v-model="name" required>
+      <label>Description:</label>
+      <textarea v-model="description" required></textarea>
+      <label>Price:</label>
+      <input type="number" v-model="price" required>
+      <label>Image URL:</label>
+      <input type="text" v-model="image" required>
+      <button>Add Food</button>
+    </form>
+  </div>
 
 
 
