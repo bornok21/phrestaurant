@@ -4,6 +4,7 @@
             </router-link>
 
         <nav class="navbar">
+            <Branches :branches="branches"></Branches>
             <router-link @click="scrollToTop()" to="/">home</router-link>
             <router-link @click="scrollToTop()" to="/about">about</router-link>
             <router-link @click="scrollToTop()" to="/promotions">promotions</router-link>
@@ -46,7 +47,12 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import Branches from "@/pages/Branches.vue";
 export default {
+    components: {
+        Branches,
+    },
+
     name: 'NavBar',
 
     computed: {

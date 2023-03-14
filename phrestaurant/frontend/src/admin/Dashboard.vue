@@ -2,35 +2,15 @@
     <div class="admin-container">
         <div class="d-flex justify-content-between">
             <h1>Hello Admin!</h1>
+            
             <button class="btn" @click="handleLogout()">Logout</button>
         </div>
-        
+        <router-link @click="scrollToTop()" to="/category" class="category">Add category</router-link>
+        <Category></Category>
 
 
 
         <div class="table-responsive">
-            
-            <div>
-    <h2>Add New Food Item</h2>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" v-model="name" required>
-      <label for="description">Description:</label>
-      <textarea id="description" v-model="description" required></textarea>
-      <label for="price">Price:</label>
-      <input type="number" id="price" v-model="price" required>
-      <button @click.prevent="addFoodItem">Add Food Item</button>
-    </form>
-
-    <div v-if="addedFoodItem">
-      <h2>Newly Added Food Item:</h2>
-      <p>Name: {{ addedFoodItem.name }}</p>
-      <p>Description: {{ addedFoodItem.description }}</p>
-      <p>Price: {{ addedFoodItem.price }}</p>
-    </div>
-  </div>
-
-
             <!-- PROJECT TABLE -->
             <table class="table colored-header datatable project-list">
                 <thead>
@@ -89,6 +69,7 @@
 import axios from "axios";
 import { mapState, mapMutations } from "vuex";
 export default {
+
     name: 'Dashboard',
 
     data() {
@@ -99,10 +80,12 @@ export default {
             sendId: undefined,
             interval: "",
 
-            name: '',
-            description: '',
-            price: null,
-            addedFoodItem: null
+            form: {
+                name: '',
+                description: '',
+                price: null,
+                number: null
+            }
         }
     },
 
@@ -130,29 +113,10 @@ export default {
     },
 
     methods: {
-        async addFoodItem() {
-            const response = await fetch("/menu", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: this.name,
-                    description: this.description,
-                    price: this.price
-                })
-            });
-
-            if (response.ok) {
-            this.addedFoodItem = {
-            name: this.name,
-            description: this.description,
-            price: this.price
-            };
-            this.name = '';
-            this.description = '';
-            this.price = null;
-      }
-
-        },
+        submitForm() {
+      // use Axios or another library to send POST request with form data
+      console.log(this.form)
+    },
 
         ...mapMutations(["setAdmin"]),
 
@@ -205,6 +169,17 @@ export default {
     padding: 2rem 9%;
     font-size: 16px;
 }
+.admin-container .category {
+    background-color: #ce4641;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 10px;
+}
 
 .project-list>tbody>tr>td {
     padding: 12px 8px;
@@ -217,6 +192,34 @@ export default {
 
 .table-responsive {
     margin-top: 8vh;
+}
+.table-responsive .admin-form {
+    max-width: 600px;
+  margin: 0 auto;
+}
+
+.table-responsive .admin-form .form-group {
+    margin-bottom: 20px;
+}
+
+.table-responsive .admin-form .form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.table-responsive .admin-form .form-group  .button[type="submit"] {
+  display: block;
+  margin-top: 20px;
 }
 
 .action-btn,

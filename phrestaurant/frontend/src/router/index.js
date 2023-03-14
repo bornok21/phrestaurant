@@ -12,6 +12,8 @@ import Thank from '../pages/Thank.vue';
 import MyOrder from '../pages/MyOrder.vue';
 import Admin from '../admin/Admin.vue';
 import Dashboard from '../admin/Dashboard.vue';
+import Branches from '@/pages/Branches.vue';
+import Category from '@/pages/Category.vue';
 
 
 const routes = [
@@ -80,6 +82,19 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
   },
+
+  {
+    path: "/Branches",
+    name: "Branches",
+    component: Branches,
+  },
+
+  {
+    path: "/Category",
+    name: "Category",
+    component: Category,
+  },
+
   {
     path: '/:pathMatch(.*)*',
     component: Home,
